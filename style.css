@@ -1,103 +1,105 @@
-body {
-    margin: 0%;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
-
+:root{
+  --bg1: #89f7fe;
+  --bg2: #66a6ff;
+  --glass: rgba(255,255,255,0.6);
+  --card: rgba(255,255,255,0.9);
+  --accent: #2b7aee;
+  --muted: #6b7280;
+  --radius: 14px;
+  --shadow: 0 8px 30px rgba(32,33,36,0.12);
 }
 
-
-#header{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    margin:auto;
-    padding: 10px;
-    height: 6vh;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-
+*{box-sizing: border-box}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  min-height:100vh;
+  /* background image with subtle gradient overlay for readability */
+  background-image: linear-gradient(rgba(8,20,40,0.30), rgba(102,166,255,0.06)), url('img/Caintamainhih-01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* use fixed parallax-like background on larger screens */
+  background-attachment: fixed;
+  color: #0f172a;
+  display:flex;
+  flex-direction:column;
 }
 
+.app-header{
+  padding:26px 20px;
+  text-align:center;
+  color:white;
+  background: linear-gradient(90deg, rgba(0,0,0,0.12), transparent);
+  position: relative;
+  overflow: visible;
+}
+.brand h1{margin:0;font-size:28px;letter-spacing:0.4px; text-shadow: 0 2px 12px rgba(2,6,23,0.25)}
+.brand .tag{margin:6px 0 0;font-size:14px;opacity:0.95}
 
-#contentBody{
-    background-color: #7e8a7f;
-    color: white;
-    text-align: center;
-    height: 90vh;
-    margin: 0%;
-    padding: 10px;
-    
-}
-#checkerForm{
-    background-color: #ffffff;
-    color: black;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    margin: auto;
-    margin-top: 20px;
-    gap: 10px;
-    margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    min-width: 200px;
-}
-/*for Checker form*/ 
-#checkerForm input[type="checkbox"] {
-    font-size: 16px;
-    padding: 5px;
-    cursor: pointer;
-}
-#campusLocation {
-    font-size: 16px;
-    padding: 5px;
-    cursor: pointer;
-}
-#spinner{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-#spinnerImage{
-    background-color: transparent;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 50%;
-    animation: spin 2s linear infinite;
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:30px}
+.search-card{width:100%;max-width:860px}
+.search-form{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.5)}
+.row{display:flex;gap:10px;justify-content:center;align-items:center}
+.row input[type='text']{flex:1;padding:12px 14px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px}
+.row select{width:100%;max-width:320px;padding:12px;border-radius:10px;border:1px solid #e6e9ef;background:white}
+.buttons{justify-content:center}
+.btn{padding:10px 14px;border-radius:10px;border:0;background:#eef2ff;color:var(--accent);cursor:pointer;font-weight:600;transition:transform .18s ease, box-shadow .18s ease, opacity .12s ease}
+.btn.primary{background:var(--accent);color:white}
+.btn:active{transform:translateY(1px)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(43,122,238,0.18)}
+
+.result-card{margin-top:18px;background:var(--glass);padding:18px;border-radius:12px;box-shadow:var(--shadow);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.45)}
+.top-row{display:flex;align-items:center;gap:14px}
+.icon{font-size:44px;width:72px;height:72px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff4,#fff);box-shadow:0 6px 18px rgba(11,22,55,0.06);overflow:hidden;padding:6px}
+.icon img{width:100%;height:100%;object-fit:contain;display:block}
+.summary h2{margin:0;font-size:20px}
+.temp{font-size:40px;font-weight:700;margin-top:6px}
+.desc{color:var(--muted);margin-top:6px}
+.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px;color:#374151}
+.error{color:#b91c1c;margin-top:8px}
+
+/* subtle decorative pill under the header */
+.app-header::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  width: 220px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  box-shadow: 0 10px 28px rgba(2,6,23,0.08);
+  pointer-events: none;
+  opacity: 0.95;
 }
 
-/*For  the Result window*/
-.Container{
-    background-color: #ffffff;
-    color: black;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    min-width: 200px;
+/* animations */
+.search-form, .result-card{animation:fadeIn .52s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.spinner{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);z-index:999}
+.spinner img{width:86px;height:86px;animation:spin 1.8s linear infinite}
+
+.app-footer{text-align:center;padding:14px;font-size:12px;color:rgba(255,255,255,0.9)}
+
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+@media (max-width:900px){
+  .brand h1{font-size:24px}
+  .temp{font-size:36px}
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@media (max-width:640px){
+  .row{flex-direction:column}
+  .row select{width:100%}
+  .details{grid-template-columns:repeat(2,1fr)}
+  /* Keep header size similar on small screens per user preference */
+  .search-form{padding:12px}
+  .result-card{padding:12px}
+  .icon{width:60px;height:60px;font-size:34px}
+  .temp{font-size:28px}
+  /* On mobile avoid fixed backgrounds for performance and rendering issues */
+  body{background-attachment: scroll}
 }
